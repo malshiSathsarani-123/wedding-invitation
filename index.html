@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hansani &amp; Kavindu | Wedding Invitation</title>
+  
+  <!-- Open Graph Meta Tags for WhatsApp, iMessage, and Social Media Previews -->
+  <meta property="og:title" content="Wedding Invitation | Hansani &amp; Kavindu">
+  <meta property="og:description" content="Together with their families, Hansani &amp; Kavindu joyfully request the pleasure of your company on 23 July 2026 at The Paradise Inn, Bolgoda.">
+  <meta property="og:image" content="assets/images/couple-hero.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#FDFBF7">
+  
+  <!-- Google Fonts for Luxury Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
+</head>
+<body>
+
+  <!-- Ambient Falling Petals & Stardust Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ============================================================
+       1. INTERACTIVE 3D ENVELOPE OPENING CEREMONY
+       ============================================================ -->
+  <section class="envelope-screen" id="envelope-screen" aria-label="Wedding Invitation Envelope">
+    <div class="envelope-screen-bg"></div>
+
+    <div class="envelope-stage">
+      <!-- 3D Envelope Container -->
+      <div class="envelope-container" id="envelope-container">
+        
+        <!-- Back Liner -->
+        <div class="envelope-back"></div>
+
+        <!-- Sliding Invitation Letter (Rises up when opened) -->
+        <div class="envelope-letter" id="envelope-letter">
+          <div class="envelope-letter-border"></div>
+          <img src="assets/images/monogram.svg" alt="H &amp; K Monogram" style="width: 58px; height: 58px; margin-bottom: 10px;">
+          <p style="font-family: var(--font-serif-display); font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-gold-600); margin-bottom: 4px;">WEDDING CELEBRATION</p>
+          <h3 style="font-family: var(--font-serif-display); font-size: 1.4rem; color: var(--color-text-main); font-weight: 500; margin-bottom: 2px;">Hansani &amp; Kavindu</h3>
+          <p style="font-family: var(--font-script); font-size: 1.35rem; color: var(--color-gold-500); margin-bottom: 6px;">invite you to celebrate</p>
+          <p style="font-family: var(--font-serif-display); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--color-text-muted);">23 JULY 2026</p>
+        </div>
+
+        <!-- Envelope Folded Pockets (Left, Right, Bottom) -->
+        <div class="envelope-pocket-body">
+          <div class="envelope-pocket-left-poly"></div>
+          <div class="envelope-pocket-right-poly"></div>
+          <div class="envelope-pocket-bottom-poly"></div>
+        </div>
+
+        <!-- Top Triangular Flap (Flips open in 3D) -->
+        <div class="envelope-top-flap" id="envelope-top-flap">
+          <div class="envelope-top-flap-inner"></div>
+        </div>
+
+        <!-- 3D Melted Wax Seal (Click to Break & Open) -->
+        <div class="wax-seal-wrapper" id="wax-seal-wrapper" title="Click to Open Invitation">
+          <div class="wax-seal-pulse"></div>
+          <img src="assets/images/wax-seal.svg" alt="Wax Seal H&amp;K" style="width: 100%; height: 100%; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));">
+        </div>
+
+      </div>
+
+      <!-- Personalized Recipient Badge on Envelope -->
+      <div class="envelope-guest-card">
+        <p class="envelope-tag">OPENING INVITATION FOR</p>
+        <h2 class="envelope-guest-name" id="envelope-guest-name">Honored Guest</h2>
+        <p class="envelope-guest-note">You are cordially invited to celebrate our wedding day</p>
+        
+        <button type="button" class="btn-open-envelope" id="btn-open-envelope">
+          <span>Open Invitation</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FLOATING CONTROLS (MUSIC & RE-OPEN ENVELOPE)
+       ============================================================ -->
+  <!-- Reopen Envelope Icon Button -->
+  <button type="button" class="floating-reopen-btn" id="floating-reopen-envelope" title="Re-view Envelope">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+  </button>
+
+  <!-- Floating Audio Player -->
+  <div class="floating-audio-player" id="floating-audio-toggle" title="Toggle Wedding Music">
+    <div class="vinyl-disk" id="vinyl-disk">
+      <div class="vinyl-center-dot">
+        <div class="vinyl-hole"></div>
+      </div>
+    </div>
+    <div class="audio-track-info">
+      <span class="audio-title">Wedding Melodies</span>
+      <span class="audio-state-text" id="audio-state-text">Tap to Play Music</span>
+    </div>
+    <div class="equalizer-bars" id="equalizer-bars">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOP NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav">
+    <a href="#hero" class="nav-brand">
+      <img src="assets/images/monogram.svg" alt="H &amp; K" class="nav-monogram-icon">
+      <span class="nav-brand-text">H &amp; K</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#couple" class="nav-link">Couple</a></li>
+      <li><a href="#story" class="nav-link">Our Story</a></li>
+      <li><a href="#itinerary" class="nav-link">Schedule</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#venue" class="nav-link">Venue</a></li>
+    </ul>
+    <a href="#rsvp" class="nav-cta-btn">RSVP</a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN EDITORIAL WRAPPER
+       ============================================================ -->
+  <main class="app-wrapper">
+
+    <!-- 1. HERO SECTION -->
+    <header class="hero-section" id="hero">
+      <img src="assets/images/couple-hero.jpg" alt="Hansani and Kavindu" class="hero-background-img">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <img src="assets/images/monogram.svg" alt="Hansani and Kavindu Monogram" class="hero-monogram">
+        <p class="hero-eyebrow">WEDDING DAY CELEBRATION</p>
+        <h1 class="hero-title">Hansani &amp; Kavindu</h1>
+        <p class="hero-subtitle-script">A quiet beginning, a beautiful yes</p>
+        
+        <div class="hero-date-badge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold-300);"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Thursday, 23 July 2026</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#countdown" class="btn-primary">Save The Date</a>
+          <a href="#itinerary" class="btn-outline-gold">View Schedule</a>
+          <a href="#rsvp" class="btn-outline-gold">RSVP Now</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. PERSONALIZED GUEST INVITATION CARD -->
+    <div class="guest-honor-badge-container">
+      <div class="guest-honor-card">
+        <p class="guest-honor-eyebrow">HONORED GUEST INVITATION</p>
+        <h3 class="guest-honor-name" id="honor-guest-name">Honored Guest</h3>
+        <p class="guest-honor-text">"Our celebration would be incomplete without your warm presence and cherished blessings."</p>
+      </div>
+    </div>
+
+    <!-- 3. LIVE COUNTDOWN SECTION -->
+    <section class="countdown-section" id="countdown">
+      <div class="section-header" style="margin-bottom: 24px;">
+        <span class="section-tag">COUNTDOWN TO CELEBRATION</span>
+        <h2 class="section-title">Until Forever Begins</h2>
+        <span class="section-subtitle-script" id="countdown-subtitle">Celebrating our big day!</span>
+      </div>
+
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <div class="countdown-num" id="countdown-days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="countdown-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="countdown-mins">00</div>
+          <div class="countdown-label">Mins</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="countdown-secs">00</div>
+          <div class="countdown-label">Secs</div>
+        </div>
+      </div>
+
+      <div class="calendar-action-row">
+        <a href="#" id="btn-google-calendar" class="btn-primary" style="font-size: 0.75rem; padding: 10px 22px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          Add to Google Calendar
+        </a>
+        <a href="#" id="btn-ics-calendar" class="btn-outline-gold" style="color: var(--color-gold-700); border-color: rgba(212, 175, 55, 0.4); font-size: 0.75rem; padding: 10px 22px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Download .ICS (Apple / Outlook)
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. COUPLE INTRODUCTION -->
+    <section class="section-wrapper" id="couple">
+      <div class="section-header">
+        <span class="section-tag">THE HAPPY COUPLE</span>
+        <h2 class="section-title">Groom &amp; Bride</h2>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+        <p class="section-description">
+          Two lives, two hearts, joined together in friendship, united forever in love.
+        </p>
+      </div>
+
+      <div class="couple-grid">
+        <!-- Bride Card -->
+        <div class="couple-card">
+          <div class="couple-photo-wrapper">
+            <img src="assets/images/bride.jpg" alt="Hansani Dharmasiri" class="couple-photo-img">
+          </div>
+          <p class="couple-role">The Bride</p>
+          <h3 class="couple-name">Hansani Dharmasiri</h3>
+          <p class="couple-parents">Daughter of Mr. Nihal &amp; Mrs. Kumari Dharmasiri</p>
+        </div>
+
+        <!-- Groom Card -->
+        <div class="couple-card">
+          <div class="couple-photo-wrapper">
+            <img src="assets/images/groom.jpg" alt="Kavindu Wickramasinghe" class="couple-photo-img">
+          </div>
+          <p class="couple-role">The Groom</p>
+          <h3 class="couple-name">Kavindu Wickramasinghe</h3>
+          <p class="couple-parents">Son of Mr. Sarath &amp; Mrs. Nalini Wickramasinghe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. OUR STORY / JOURNEY TIMELINE -->
+    <section class="section-wrapper" id="story" style="background: #FAF7F2;">
+      <div class="section-header">
+        <span class="section-tag">HOW OUR PATHS CAME TOGETHER</span>
+        <h2 class="section-title">Our Love Story</h2>
+        <span class="section-subtitle-script">Memories along the way</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="story-timeline">
+        <!-- Step 1 -->
+        <div class="story-card-row">
+          <div class="story-node-circle"><div class="story-node-dot"></div></div>
+          <div class="story-card">
+            <p class="story-date-tag">October 2021</p>
+            <h4 class="story-card-title">The First Hello</h4>
+            <p class="story-card-subtitle">A quiet beginning over Ceylon tea</p>
+            <p class="story-card-desc">What began as a chance meeting turned into hours of effortless laughter and shared dreams. By midnight, we both knew our paths were destined to cross.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="story-card-row">
+          <div class="story-node-circle"><div class="story-node-dot"></div></div>
+          <div class="story-card">
+            <p class="story-date-tag">August 2022</p>
+            <h4 class="story-card-title">The First Adventure</h4>
+            <p class="story-card-subtitle">Misty hills &amp; golden shores</p>
+            <p class="story-card-desc">From scenic journeys through the tea hills of Ella to quiet walks along the southern ocean breeze, every step together reaffirmed that home was wherever we were side by side.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="story-card-row">
+          <div class="story-node-circle"><div class="story-node-dot"></div></div>
+          <div class="story-card">
+            <p class="story-date-tag">December 2024</p>
+            <h4 class="story-card-title">The Beautiful Yes</h4>
+            <p class="story-card-subtitle">Under a canopy of starlight</p>
+            <p class="story-card-desc">Beneath glowing lanterns with the gentle whisper of ocean waves, Kavindu went down on one knee. With tears of joy and a full heart, Hansani whispered "Yes!".</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="story-card-row">
+          <div class="story-node-circle"><div class="story-node-dot"></div></div>
+          <div class="story-card">
+            <p class="story-date-tag">23 July 2026</p>
+            <h4 class="story-card-title">Forever Begins Today</h4>
+            <p class="story-card-subtitle">Hand in hand onto the sacred Poruwa</p>
+            <p class="story-card-desc">Surrounded by our dearest families and cherished friends, we step forward to begin our sacred journey as husband and wife.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. THE DAY, BEAUTIFULLY PLANNED (SCHEDULE) -->
+    <section class="section-wrapper itinerary-section" id="itinerary">
+      <div class="section-header">
+        <span class="section-tag">WEDDING DAY ITINERARY</span>
+        <h2 class="section-title">The Day, Beautifully Planned</h2>
+        <span class="section-subtitle-script">Sacred traditions &amp; celebrations</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="itinerary-list">
+        <!-- 09:15 AM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">09:15 AM</span>
+            <span class="itinerary-badge">Welcome</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Guests Arrival &amp; Welcome</h4>
+            <p class="itinerary-item-desc">Warm reception with chilled King Coconut water, herbal refreshments, and traditional treats.</p>
+          </div>
+        </div>
+
+        <!-- 09:45 AM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">09:48 AM</span>
+            <span class="itinerary-badge">Nakatha</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Sacred Poruwa Ceremony</h4>
+            <p class="itinerary-item-desc">Auspicious Poruwa rites, lighting the traditional oil lamp, and Jayamangala Gatha blessings.</p>
+          </div>
+        </div>
+
+        <!-- 10:30 AM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">10:30 AM</span>
+            <span class="itinerary-badge">Vows</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Registration &amp; Ring Exchange</h4>
+            <p class="itinerary-item-desc">Signing of the marriage registry, exchanging vows, and sealing our promises with wedding rings.</p>
+          </div>
+        </div>
+
+        <!-- 11:30 AM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">11:30 AM</span>
+            <span class="itinerary-badge">Toast</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Champagne Toast &amp; Cake Cutting</h4>
+            <p class="itinerary-item-desc">Cutting the ceremonial wedding cake accompanied by champagne toasts and heartfelt speeches.</p>
+          </div>
+        </div>
+
+        <!-- 12:15 PM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">12:15 PM</span>
+            <span class="itinerary-badge">Feast</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Grand Lunch Banquet</h4>
+            <p class="itinerary-item-desc">Indulge in an exquisite celebratory banquet featuring Sri Lankan and international culinary favorites.</p>
+          </div>
+        </div>
+
+        <!-- 01:45 PM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">01:45 PM</span>
+            <span class="itinerary-badge">Music</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">First Dance &amp; Live Melodies</h4>
+            <p class="itinerary-item-desc">The newlyweds take the floor for their first dance, followed by lively music, photography, and dancing.</p>
+          </div>
+        </div>
+
+        <!-- 03:30 PM -->
+        <div class="itinerary-item">
+          <div class="itinerary-time-box">
+            <span class="itinerary-time-text">03:30 PM</span>
+            <span class="itinerary-badge">Farewell</span>
+          </div>
+          <div class="itinerary-body">
+            <h4 class="itinerary-item-title">Going Away &amp; Send-off</h4>
+            <p class="itinerary-item-desc">Farewell with warm appreciation, tokens of love, and wishes of lifelong happiness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FORMAL PHYSICAL INVITATION CARD -->
+    <section class="formal-card-section">
+      <div class="formal-card-frame">
+        <div class="formal-card-inner-border"></div>
+        <div class="corner-flourish corner-tl"></div>
+        <div class="corner-flourish corner-tr"></div>
+        <div class="corner-flourish corner-bl"></div>
+        <div class="corner-flourish corner-br"></div>
+
+        <img src="assets/images/monogram.svg" alt="Monogram" class="formal-card-monogram">
+        <p class="formal-invocation">Together with their families</p>
+        
+        <p class="formal-wording-parents">
+          <strong>Mr. &amp; Mrs. Sarath Wickramasinghe</strong><br>
+          and<br>
+          <strong>Mr. &amp; Mrs. Nihal Dharmasiri</strong>
+        </p>
+
+        <p class="formal-invocation" style="margin: 10px 0;">request the honour of your presence at the marriage of</p>
+        <h2 class="formal-couple-names">Hansani &amp; Kavindu</h2>
+
+        <div class="formal-date-venue-box">
+          <div class="formal-date-highlight">Thursday, 23 July 2026</div>
+          <p style="font-size: 0.88rem; color: var(--color-gold-700); font-weight: 600; margin-bottom: 4px;">At 09:30 in the morning</p>
+          <div class="formal-venue-highlight">The Paradise Inn, Bolgoda Hall</div>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted);">Citrus Atrium Ballroom • Bolgoda Lakefront</p>
+        </div>
+
+        <p style="font-family: var(--font-script); font-size: 1.5rem; color: var(--color-gold-600); margin-top: 16px;">
+          "Your presence is our greatest joy"
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. WEDDING GALLERY -->
+    <section class="section-wrapper gallery-section" id="gallery">
+      <div class="section-header">
+        <span class="section-tag">CAPTURED MOMENTS</span>
+        <h2 class="section-title">Wedding Gallery</h2>
+        <span class="section-subtitle-script">Glimpses of our love</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="gallery-filter-row">
+        <button type="button" class="gallery-filter-btn active" data-filter="all">All</button>
+        <button type="button" class="gallery-filter-btn" data-filter="preshoot">Pre-shoot</button>
+        <button type="button" class="gallery-filter-btn" data-filter="moments">Moments</button>
+        <button type="button" class="gallery-filter-btn" data-filter="venue">Venue</button>
+      </div>
+
+      <div class="gallery-masonry">
+        <div class="gallery-item-card" data-category="preshoot">
+          <img src="assets/images/gallery-1.jpg" alt="Golden Hour by the Beach" class="gallery-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Sunset Whispers by the Southern Ocean</span>
+          </div>
+        </div>
+        <div class="gallery-item-card" data-category="preshoot">
+          <img src="assets/images/gallery-2.jpg" alt="Serenade by the Shore" class="gallery-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Serenade by the Shore</span>
+          </div>
+        </div>
+        <div class="gallery-item-card" data-category="moments">
+          <img src="assets/images/gallery-3.jpg" alt="Hansani - The Radiant Bride" class="gallery-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Hansani • The Radiant Bride</span>
+          </div>
+        </div>
+        <div class="gallery-item-card" data-category="venue">
+          <img src="assets/images/gallery-4.jpg" alt="Traditional Poruwa Hall" class="gallery-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Citrus Atrium Ballroom &amp; Poruwa</span>
+          </div>
+        </div>
+        <div class="gallery-item-card" data-category="venue">
+          <img src="assets/images/gallery-5.jpg" alt="Bolgoda Lakefront at Blue Hour" class="gallery-img">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Bolgoda Lakefront at Twilight</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. VENUE & TRAVEL GUIDE -->
+    <section class="section-wrapper venue-section" id="venue">
+      <div class="section-header">
+        <span class="section-tag">DESTINATION &amp; DIRECTIONS</span>
+        <h2 class="section-title">The Venue</h2>
+        <span class="section-subtitle-script">The Paradise Inn, Bolgoda</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="venue-card">
+        <div class="venue-image-box">
+          <img src="assets/images/venue.jpg" alt="The Paradise Inn, Bolgoda" class="venue-img">
+          <span class="venue-badge-pill">Citrus Atrium Ballroom</span>
+        </div>
+
+        <div class="venue-details-body">
+          <h3 class="venue-name-title">The Paradise Inn, Bolgoda Hall</h3>
+          <p class="venue-hall-subtitle">Rusirupaya, Bolgoda Lakefront, Sri Lanka</p>
+
+          <div class="venue-address-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold-500); flex-shrink: 0; margin-top: 2px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Rusirupaya, Bolgoda Lakefront, Piliyandala / Moratuwa (15 mins from Southern Expressway Kottawa / Kahathuduwa exit)</span>
+          </div>
+
+          <div class="venue-address-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold-500); flex-shrink: 0; margin-top: 2px;"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            <span>Complimentary valet parking available at the main entrance gate. Uber &amp; PickMe pick-up point situated at portico.</span>
+          </div>
+
+          <div class="venue-actions-row">
+            <a href="https://maps.google.com/?q=The+Paradise+Inn+Bolgoda" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 0.78rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Open in Google Maps
+            </a>
+            <a href="tel:+94768559189" class="btn-outline-gold" style="color: var(--color-gold-700); border-color: rgba(212, 175, 55, 0.4); font-size: 0.78rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call Venue Coordinator
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. DRESS CODE & PALETTE GUIDE -->
+    <section class="section-wrapper dress-code-section" id="dresscode">
+      <div class="section-header">
+        <span class="section-tag">STYLE GUIDE</span>
+        <h2 class="section-title">Dress Code</h2>
+        <span class="section-subtitle-script">Traditional Formal / Elegant Lounge</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+        <p class="section-description">
+          We invite you to dress in elegant traditional attire (Sarees, Osari, National) or sharp formal lounge suits. Subtle pastel and warm earthy tones harmonize beautifully with our celebration.
+        </p>
+      </div>
+
+      <div class="palette-swatches-row">
+        <div class="swatch-item">
+          <div class="swatch-circle" style="background-color: #D4AF37;"></div>
+          <span class="swatch-name">Champagne</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch-circle" style="background-color: #7D8C75;"></div>
+          <span class="swatch-name">Sage Green</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch-circle" style="background-color: #FDFBF7; border: 1px solid #E0D5C1;"></div>
+          <span class="swatch-name">Ivory Silk</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch-circle" style="background-color: #C89595;"></div>
+          <span class="swatch-name">Dusty Rose</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch-circle" style="background-color: #3A3E39;"></div>
+          <span class="swatch-name">Charcoal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. INTERACTIVE RSVP FORM & WHATSAPP SENDER -->
+    <section class="section-wrapper rsvp-section" id="rsvp">
+      <div class="section-header">
+        <span class="section-tag">KINDLY RESPOND BY 10 JULY 2026</span>
+        <h2 class="section-title">RSVP</h2>
+        <span class="section-subtitle-script">We look forward to celebrating with you</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="rsvp-card">
+        <form id="wedding-rsvp-form">
+          
+          <!-- Guest Name Field -->
+          <div class="rsvp-form-group">
+            <label for="rsvp-name" class="rsvp-label">Your Name</label>
+            <input type="text" id="rsvp-name" class="rsvp-input" placeholder="e.g. Mr. &amp; Mrs. Nimal Perera" required>
+          </div>
+
+          <!-- Attendance Option -->
+          <div class="rsvp-form-group">
+            <label class="rsvp-label">Will you be attending?</label>
+            <div class="rsvp-attendance-options">
+              <label class="rsvp-radio-pill selected">
+                <input type="radio" name="attendance" value="attending" checked>
+                <span>Joyfully Accept<br><small style="font-size:0.75rem;">(සහභාගී වෙමි)</small></span>
+              </label>
+              <label class="rsvp-radio-pill">
+                <input type="radio" name="attendance" value="declined">
+                <span>Regretfully Decline<br><small style="font-size:0.75rem;">(සහභාගී විය නොහැක)</small></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Guest Count -->
+          <div class="rsvp-form-group">
+            <label for="rsvp-guests" class="rsvp-label">Number of Guests Attending</label>
+            <select id="rsvp-guests" class="rsvp-select">
+              <option value="1">1 Person (Just me)</option>
+              <option value="2" selected>2 Persons</option>
+              <option value="3">3 Persons</option>
+              <option value="4">4 Persons</option>
+              <option value="5+">5+ Family</option>
+            </select>
+          </div>
+
+          <!-- Meal Preference -->
+          <div class="rsvp-form-group">
+            <label for="rsvp-meal" class="rsvp-label">Dietary Preference</label>
+            <select id="rsvp-meal" class="rsvp-select">
+              <option value="Sri Lankan Festive Buffet" selected>Sri Lankan Festive Buffet (Standard)</option>
+              <option value="Vegetarian / Vegan">Vegetarian / Vegan Buffet</option>
+              <option value="Halal Friendly">Halal Selection</option>
+              <option value="Children's Menu">Special / Kids Menu</option>
+            </select>
+          </div>
+
+          <!-- Special Wish / Message -->
+          <div class="rsvp-form-group">
+            <label for="rsvp-message" class="rsvp-label">Blessings &amp; Message for the Couple</label>
+            <textarea id="rsvp-message" rows="3" class="rsvp-textarea" placeholder="Leave your heartfelt wishes for Hansani &amp; Kavindu..."></textarea>
+          </div>
+
+          <button type="submit" class="rsvp-submit-btn">
+            Confirm RSVP &amp; Send Wishes ✨
+          </button>
+        </form>
+
+        <!-- Success Alert & Direct WhatsApp Button -->
+        <div class="rsvp-success-alert" id="rsvp-success-alert">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 8px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h4 style="font-family: var(--font-serif-display); font-size: 1.2rem; color: #2E5A27; margin-bottom: 4px;">Thank you for your RSVP!</h4>
+          <p style="font-size: 0.88rem; color: #4B6E44; margin-bottom: 12px;">Your response has been confirmed. You can also send this confirmation directly to Hansani &amp; Kavindu on WhatsApp!</p>
+          
+          <a href="#" id="rsvp-whatsapp-link" target="_blank" rel="noopener noreferrer" class="rsvp-whatsapp-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.476-.15-.676.15-.2.301-.776.98-.952 1.18-.175.201-.35.226-.651.076-.3-.15-1.268-.468-2.416-1.492-.894-.797-1.498-1.782-1.674-2.083-.176-.301-.019-.464.132-.614.135-.135.301-.35.451-.525.15-.176.2-.301.301-.502.1-.2.05-.376-.025-.526-.076-.15-.676-1.63-.927-2.233-.244-.588-.493-.508-.676-.518-.175-.01-.376-.01-.577-.01-.2 0-.526.075-.802.376-.276.301-1.053 1.028-1.053 2.507 0 1.479 1.078 2.908 1.229 3.109.15.2 2.122 3.24 5.141 4.544.719.31 1.28.497 1.718.636.722.229 1.379.197 1.899.119.58-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35zM12.04 2C6.51 2 2.015 6.495 2.015 12.025c0 1.968.57 3.864 1.653 5.49L2 22l4.636-1.616a9.98 9.98 0 0 0 5.404 1.566h.004c5.529 0 10.024-4.495 10.024-10.025C22.068 6.495 17.57 2 12.04 2z"/></svg>
+            Send RSVP via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. WISHES & BLESSINGS GUESTBOOK WALL -->
+    <section class="section-wrapper guestbook-section" id="guestbook">
+      <div class="section-header">
+        <span class="section-tag">GUEST BLESSINGS</span>
+        <h2 class="section-title">Wishes Wall</h2>
+        <span class="section-subtitle-script">Words of love from family &amp; friends</span>
+        <div class="gold-divider">
+          <div class="gold-divider-diamond"></div>
+        </div>
+      </div>
+
+      <div class="wishes-container" id="wishes-wall-container">
+        <!-- Dynamically injected and pre-seeded wishes -->
+      </div>
+    </section>
+
+    <!-- 13. WISHING WELL / GIFT NOTE -->
+    <section class="section-wrapper" style="padding-top: 20px;">
+      <div class="wishing-well-card">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold-500); margin: 0 auto 12px;"><rect width="20" height="14" x="2" y="6" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><path d="M12 14v4"/><path d="M10 16h4"/></svg>
+        <h3 class="wishing-well-title">Wishing Well</h3>
+        <p class="wishing-well-text">
+          "Your loving presence and heartfelt blessings on our wedding day are the greatest gifts we could ever ask for. Should you desire to honor us with a gift, a wishing well will be placed at the reception to help us build our new home together."
+        </p>
+      </div>
+    </section>
+
+    <!-- 14. FOOTER -->
+    <footer class="site-footer">
+      <img src="assets/images/monogram.svg" alt="H &amp; K" class="footer-monogram">
+      <h3 class="footer-couple-names">Hansani &amp; Kavindu</h3>
+      <p class="footer-date">23 · JULY · 2026 • THE PARADISE INN, BOLGODA</p>
+      <p style="font-family: var(--font-script); font-size: 1.5rem; color: var(--color-gold-400); margin-bottom: 20px;">
+        Forever begins with you
+      </p>
+
+      <!-- Couple's Custom Personalized Link Creator Tool & Admin RSVP -->
+      <div class="footer-couple-tools" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button type="button" class="btn-generate-guest-link" id="btn-open-link-generator">
+          ✨ Generate Guest WhatsApp Link
+        </button>
+        <button type="button" class="btn-generate-guest-link" id="btn-open-rsvp-admin" style="background: rgba(212, 175, 55, 0.15); border-color: var(--color-gold-400);">
+          📋 View RSVPs &amp; Export Excel (Admin)
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ============================================================
+       MODALS: LIGHTBOX & PERSONALIZED LINK GENERATOR
+       ============================================================ -->
+  <!-- 1. Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <button type="button" class="lightbox-close-btn" id="lightbox-close">&times;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- 2. Personalized Link Creator Modal (For Hansani & Kavindu) -->
+  <div class="link-generator-modal" id="link-generator-modal">
+    <div class="link-generator-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <h3 class="link-generator-title">Create Personalized Guest Link</h3>
+        <button type="button" id="close-link-generator" style="background: none; border: none; font-size: 1.4rem; cursor: pointer;">&times;</button>
+      </div>
+      <p class="link-generator-desc">Type the guest or family name to generate an invitation link that greets them personally by name on the envelope!</p>
+
+      <div style="margin-bottom: 14px;">
+        <label for="gen-guest-name" style="font-size: 0.8rem; font-weight: 600; color: var(--color-gold-700); display: block; margin-bottom: 6px;">Guest Name:</label>
+        <input type="text" id="gen-guest-name" class="rsvp-input" placeholder="e.g. Uncle Rohan &amp; Aunty Mala">
+      </div>
+
+      <div class="link-output-box" id="gen-link-output">
+        https://hansani-kavindu.love/?to=Uncle+Rohan
+      </div>
+
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button type="button" class="btn-primary" id="btn-copy-gen-link" style="flex: 1; font-size: 0.78rem;">
+          Copy Link
+        </button>
+        <a href="#" id="btn-share-gen-wa" target="_blank" rel="noopener noreferrer" class="rsvp-whatsapp-btn" style="flex: 1; margin: 0; padding: 10px 14px; font-size: 0.78rem;">
+          Send via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. RSVP Admin Dashboard Modal (For Hansani & Kavindu) -->
+  <div class="link-generator-modal" id="rsvp-admin-modal">
+    <div class="link-generator-card" style="max-width: 650px; width: 95%; max-height: 90vh; display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <h3 class="link-generator-title" style="margin: 0;">Wedding RSVPs &amp; Guest List</h3>
+        <button type="button" id="close-rsvp-admin" style="background: none; border: none; font-size: 1.4rem; cursor: pointer;">&times;</button>
+      </div>
+
+      <!-- Quick Stats -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
+        <div style="background: #FAF7F2; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; padding: 10px; text-align: center;">
+          <div id="stat-total-rsvps" style="font-size: 1.4rem; font-weight: 700; color: var(--color-gold-700);">0</div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; color: var(--color-text-muted);">Total Responses</div>
+        </div>
+        <div style="background: #E8F5E9; border: 1px solid #A5D6A7; border-radius: 8px; padding: 10px; text-align: center;">
+          <div id="stat-attending-guests" style="font-size: 1.4rem; font-weight: 700; color: #2E7D32;">0</div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; color: #2E7D32;">Attending Guests</div>
+        </div>
+        <div style="background: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 8px; padding: 10px; text-align: center;">
+          <div id="stat-declined-rsvps" style="font-size: 1.4rem; font-weight: 700; color: #C62828;">0</div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; color: #C62828;">Declined</div>
+        </div>
+      </div>
+
+      <!-- Table Wrapper -->
+      <div style="overflow-x: auto; overflow-y: auto; max-height: 45vh; border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; margin-bottom: 16px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead style="background: #FAF7F2; position: sticky; top: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3);">
+            <tr>
+              <th style="padding: 10px 12px;">Date</th>
+              <th style="padding: 10px 12px;">Guest Name</th>
+              <th style="padding: 10px 12px;">Status</th>
+              <th style="padding: 10px 12px; text-align: center;">Count</th>
+              <th style="padding: 10px 12px;">Meal</th>
+              <th style="padding: 10px 12px;">Wishes</th>
+            </tr>
+          </thead>
+          <tbody id="admin-rsvp-table-body">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Action buttons -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between;">
+        <button type="button" class="btn-primary" id="btn-export-rsvps-csv" style="font-size: 0.78rem; padding: 10px 18px;">
+          📥 Download Excel / CSV
+        </button>
+        <button type="button" id="btn-clear-rsvps" style="background: none; border: 1px solid #FFCDD2; color: #C62828; padding: 8px 14px; border-radius: var(--border-radius-pill); font-size: 0.75rem; cursor: pointer;">
+          Clear All Records
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/wedding-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

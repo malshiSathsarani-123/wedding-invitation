@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF5B7"/>
+      <stop offset="25%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#AA771C"/>
+      <stop offset="75%" stop-color="#FDFBF7"/>
+      <stop offset="100%" stop-color="#8B6508"/>
+    </linearGradient>
+    <linearGradient id="sealRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9E2A2B"/>
+      <stop offset="50%" stop-color="#67000B"/>
+      <stop offset="100%" stop-color="#3F0006"/>
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="emboss" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Fine Circle -->
+  <circle cx="150" cy="150" r="140" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8"/>
+  <circle cx="150" cy="150" r="132" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <circle cx="150" cy="150" r="126" fill="none" stroke="url(#goldGrad)" stroke-width="0.75" opacity="0.6"/>
+
+  <!-- Botanical Laurel Leaves Wreath -->
+  <g stroke="url(#goldGrad)" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Branch -->
+    <path d="M 60 150 C 60 90, 100 50, 150 45" />
+    <path d="M 60 150 C 60 210, 100 250, 150 255" />
+    <!-- Right Branch -->
+    <path d="M 240 150 C 240 90, 200 50, 150 45" />
+    <path d="M 240 150 C 240 210, 200 250, 150 255" />
+
+    <!-- Leaf Accents Left -->
+    <path d="M 62 135 C 50 130, 48 118, 58 118 C 68 118, 66 130, 62 135 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 72 105 C 60 98, 62 86, 72 88 C 82 90, 78 100, 72 105 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 92 78 C 82 70, 88 58, 98 62 C 108 66, 100 75, 92 78 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 122 58 C 114 48, 124 38, 132 44 C 140 50, 130 57, 122 58 Z" fill="url(#goldGrad)" opacity="0.7"/>
+
+    <!-- Leaf Accents Right -->
+    <path d="M 238 135 C 250 130, 252 118, 242 118 C 232 118, 234 130, 238 135 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 228 105 C 240 98, 238 86, 228 88 C 218 90, 222 100, 228 105 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 208 78 C 218 70, 212 58, 202 62 C 192 66, 200 75, 208 78 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M 178 58 C 186 48, 176 38, 168 44 C 160 50, 170 57, 178 58 Z" fill="url(#goldGrad)" opacity="0.7"/>
+  </g>
+
+  <!-- Little Star/Flourish Top & Bottom -->
+  <circle cx="150" cy="45" r="3" fill="url(#goldGrad)"/>
+  <circle cx="150" cy="255" r="3" fill="url(#goldGrad)"/>
+
+  <!-- Date Text Top and Bottom -->
+  <text x="150" y="80" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="11" font-weight="600" letter-spacing="4" fill="url(#goldGrad)">TOGETHER FOREVER</text>
+  <text x="150" y="235" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="11" font-weight="600" letter-spacing="4" fill="url(#goldGrad)">23 · 07 · 2026</text>
+
+  <!-- Central Monogram Letters -->
+  <!-- 'H' Letter -->
+  <text x="108" y="166" text-anchor="middle" font-family="'Playfair Display', 'Cormorant Garamond', 'Cinzel', serif" font-size="62" font-weight="400" fill="url(#goldGrad)" filter="url(#emboss)" letter-spacing="0">H</text>
+
+  <!-- Ampersand in cursive calligraphy -->
+  <text x="150" y="158" text-anchor="middle" font-family="'Great Vibes', 'Italianno', 'Playfair Display', cursive" font-size="44" font-weight="300" fill="url(#goldGrad)" opacity="0.9">&amp;</text>
+
+  <!-- 'K' Letter -->
+  <text x="192" y="166" text-anchor="middle" font-family="'Playfair Display', 'Cormorant Garamond', 'Cinzel', serif" font-size="62" font-weight="400" fill="url(#goldGrad)" filter="url(#emboss)" letter-spacing="0">K</text>
+</svg>
+

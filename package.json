@@ -1,0 +1,20 @@
+{
+  "name": "hansani-kavindu-wedding-invitation",
+  "version": "1.0.0",
+  "description": "Luxury Wedding Invitation Website for Hansani & Kavindu",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "python -m http.server 8080",
+    "serve": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "wedding",
+    "invitation",
+    "luxury",
+    "poruwa",
+    "sri-lanka"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
