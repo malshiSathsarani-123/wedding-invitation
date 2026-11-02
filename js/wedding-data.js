@@ -53,9 +53,9 @@ const WEDDING_DATA = {
 
   // WhatsApp & RSVP Settings
   rsvp: {
-    whatsappNumber: "94768559189",
+    whatsappNumber: "94774163677",
     coupleContactName: "Hansani & Kavindu",
-    contactPhone: "+94 76 855 9189",
+    contactPhone: "+94 77 416 3677",
     
     // Optional: Paste your free Google Sheets Webhook URL or Formspree URL here to automatically sync to Excel
     googleSheetsWebhookUrl: ""
